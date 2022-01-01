@@ -30,11 +30,11 @@ class CartDetail extends Component {
         return(
             <div style={styles.cartDetail}>
                 <ul style={styles.ul}>
-                    {cart.map(product => 
+                    {Array.from(cart).map(([product, quantity]) => 
                         <li key={product.name} style={styles.li}>
                             <img alt={product.name} src={product.img} width="60px" height="auto"/>
                             <div>{product.name}</div> 
-                            <div>{product.quantity}</div>
+                            <div>{quantity}</div>
                         </li>
                         )}
                 </ul>

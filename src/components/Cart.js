@@ -24,11 +24,11 @@ class Cart extends Component {
     }
 
     getNumberOfProducts = (cart) => {
-        return cart.reduce((acc, product) => acc + product.quantity, 0);
+        return Array.from(cart.values()).reduce((acc, quantity) => acc + quantity, 0);
     }
 
     showCartDetail = () => {
-        if(this.props.cart.length > 0)
+        if(this.props.cart.size > 0)
             this.setState({isCartDetailShowed: !this.state.isCartDetailShowed});
     }
 
