@@ -25,6 +25,15 @@ const styles = {
 }
 
 class CartDetail extends Component {
+    
+    getTotalPrice = () => {
+        const {cart} = this.props;
+        console.log(Array.from(cart));
+        return Array.from(cart).reduce((total, [product, quantity]) => {
+             return total + product.price * quantity;
+        }, 0);
+    }
+    
     render() {
         const {cart} = this.props;
         return(
@@ -35,8 +44,12 @@ class CartDetail extends Component {
                             <img alt={product.name} src={product.img} width="60px" height="auto"/>
                             <div>{product.name}</div> 
                             <div>{quantity}</div>
+                            <div>{(product.price * quantity).toFixed(2)} €</div>
                         </li>
                         )}
+                        <li style={{...styles.li, justifyContent: "right"}}>
+                            <span>Total price: {this.getTotalPrice().toFixed(2)} €</span>
+                        </li>
                 </ul>
             </div>
         );
